@@ -1,7 +1,5 @@
 # My Projects
 
-**我所有的项目都在 https://dxzpages.cc.cd**
-
 | Language | Content |
 | :--- | :--- |
 | 🇨🇳 简体中文 | 我所有的项目都在 https://dxzpages.cc.cd |
