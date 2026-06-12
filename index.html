@@ -230,7 +230,6 @@
             return repos.map(r => ({
                 name: r.name,
                 repoUrl: r.html_url,
-                // 如果仓库设置了 Website（homepage），就用它；否则演示链接为 null
                 pagesUrl: r.homepage ? r.homepage : null,
                 desc: r.description,
                 icon: randomIcon(),
@@ -287,15 +286,17 @@
             countSpan.textContent = filteredData.length;
         }
 
-        // ---------- 三级加载 ----------
+        // ---------- 三级加载（带防缓存） ----------
         async function loadNavigation() {
             grid.innerHTML = '<div class="loading">正在连接星图数据库...</div>';
 
             let repos = null;
+            const ts = Date.now(); // 防缓存时间戳
 
             // 第一级：GitHub API
             try {
-                const res = await fetch('https://api.github.com/users/dxz23456/repos?per_page=100&sort=full_name&direction=asc');
+                const url = `https://api.github.com/users/dxz23456/repos?per_page=100&sort=full_name&direction=asc&_=${ts}`;
+                const res = await fetch(url, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const apiData = await res.json();
                 repos = buildFromApi(apiData);
@@ -307,7 +308,8 @@
             // 第二级：nav.json
             if (!repos) {
                 try {
-                    const res = await fetch('https://dxz23456.github.io/DXZnavigation/nav.json');
+                    const url = `https://dxz23456.github.io/DXZnavigation/nav.json?_=${ts}`;
+                    const res = await fetch(url, { cache: 'no-store' });
                     if (!res.ok) throw new Error(`HTTP ${res.status}`);
                     repos = await res.json();
                     console.log('✅ 从 nav.json 加载成功');
