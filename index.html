@@ -198,11 +198,11 @@
     <script>
         // ---------- 预设数据 ----------
         const presetRepos = [
-            { name: "404Planet", repoUrl: "https://github.com/DXZ23456/404Planet", pagesUrl: "https://dxz23456.github.io/404Planet/", desc: null, icon: "🪐" },
-            { name: "Enjoy", repoUrl: "https://github.com/DXZ23456/Enjoy", pagesUrl: "https://dxz23456.github.io/Enjoy/", desc: null, icon: "😂" },
-            { name: "Focus-Pomodoro-Timer", repoUrl: "https://github.com/DXZ23456/Focus-Pomodoro-Timer", pagesUrl: "https://dxz23456.github.io/Focus-Pomodoro-Timer/", desc: null, icon: "⏱️" },
-            { name: "macos", repoUrl: "https://github.com/DXZ23456/macos", pagesUrl: "https://dxz23456.github.io/macos/", desc: null, icon: "🍎" },
-            { name: "Matrix-Digital-Rain", repoUrl: "https://github.com/DXZ23456/Matrix-Digital-Rain", pagesUrl: "https://dxz23456.github.io/Matrix-Digital-Rain/", desc: null, icon: "💾" }
+            { name: "404Planet", repoUrl: "https://github.com/starclimber/404Planet", pagesUrl: "https://starclimber.github.io/404Planet/", desc: null, icon: "🪐" },
+            { name: "Enjoy", repoUrl: "https://github.com/starclimber/Enjoy", pagesUrl: "https://starclimber.github.io/Enjoy/", desc: null, icon: "😂" },
+            { name: "Focus-Pomodoro-Timer", repoUrl: "https://github.com/starclimber/Focus-Pomodoro-Timer", pagesUrl: "https://starclimber.github.io/Focus-Pomodoro-Timer/", desc: null, icon: "⏱️" },
+            { name: "macos", repoUrl: "https://github.com/starclimber/macos", pagesUrl: "https://starclimber.github.io/macos/", desc: null, icon: "🍎" },
+            { name: "Matrix-Digital-Rain", repoUrl: "https://github.com/starclimber/Matrix-Digital-Rain", pagesUrl: "https://starclimber.github.io/Matrix-Digital-Rain/", desc: null, icon: "💾" }
         ];
 
         const iconPool = ['🪐','💾','😂','🚀','🐙','🌌','🎮','🔮','⚡','🔥','💻','📡','🧩','🎯','🛸','🤖'];
@@ -295,7 +295,7 @@
 
             // 第一级：GitHub API
             try {
-                const url = `https://api.github.com/users/dxz23456/repos?per_page=100&sort=full_name&direction=asc&_=${ts}`;
+                const url = `https://api.github.com/users/starclimber/repos?per_page=100&sort=full_name&direction=asc&_=${ts}`;
                 const res = await fetch(url, { cache: 'no-store' });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const apiData = await res.json();
